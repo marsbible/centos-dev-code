@@ -26,8 +26,8 @@ RUN cd /home/dev/glibc-2.20 && mkdir build && cd build && ../configure --prefix=
     && unzip /home/dev/clangd-linux-11.0.0.zip -d /usr/local \
     && ln -s /usr/local/clangd_11.0.0/bin/clangd  /usr/bin/clangd \
     && patchelf --set-interpreter /opt/glibc-2.20/lib/ld-linux-x86-64.so.2 --set-rpath /opt/glibc-2.20/lib:/usr/lib64 /usr/local/clangd_11.0.0/bin/clangd \
-    && rm -fr /home/dev/* \
-    && pip install compdb
+    && pip install -q compdb \
+    && rm -fr /home/dev/*
 
 USER dev 
 WORKDIR /home/dev
