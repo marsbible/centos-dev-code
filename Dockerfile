@@ -1,8 +1,9 @@
 FROM centos:7.6.1810
 
 RUN  yum -y group install "Development Tools" \
+        && yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm \
         && localedef -c -f UTF-8 -i en_US en_US.UTF-8 \
-        && yum -y install libaio sudo openssl wget file unzip git vim curl \
+        && yum -y install libaio sudo openssl wget file unzip vim curl git \
         && yum -y clean all \
         && useradd --create-home --shell /bin/bash dev -G wheel \
         && echo "dev:dev" | chpasswd
