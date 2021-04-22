@@ -6,6 +6,7 @@ RUN  yum -y group install "Development Tools" \
         && localedef -c -f UTF-8 -i en_US en_US.UTF-8 \
         && yum -y install libaio sudo openssl net-tools wget file unzip vim curl git python-pip\
         && yum -y clean all \
+        && debuginfo-install -y glibc-2.17-323.el7_9.x86_64 libaio-0.3.109-13.el7.x86_64 libgcc-4.8.5-44.el7.x86_64 libstdc++-4.8.5-44.el7.x86_64 \
         && useradd --create-home --shell /bin/bash dev -G wheel \
         && echo "dev:dev" | chpasswd
 
